@@ -42,7 +42,7 @@ function App() {
             number={casosHoje}
             increase={((casosHoje / (casos - casosHoje)) * 100).toFixed(2)}
           />
-          <MonitorItem label="Mortes" number={mortes} />
+          <MonitorItem label="Casos de Mortes" number={mortes} />
           <MonitorItem label="Casos críticos" number={criticos} />
         </div>
       </header>
