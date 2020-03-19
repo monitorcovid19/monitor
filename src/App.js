@@ -14,6 +14,7 @@ function App() {
   const [casosHoje, setCasosHoje] = useState();
   const [mortes, setMortes] = useState();
   const [criticos, setCriticos] = useState();
+  const [updateTime, setUpdateTime] = useState();
   const getData = async () => {
     const response = await axios.get(
       "https://coronavirus-19-api.herokuapp.com/countries/brazil"
@@ -23,6 +24,8 @@ function App() {
     setCasosHoje(response.data.todayCases);
     setMortes(response.data.deaths);
     setCriticos(response.data.critical);
+    const now = new Date();
+    setUpdateTime(now.toLocaleString("pt-BR"));
   };
   return (
     <div className="App">
@@ -44,6 +47,9 @@ function App() {
           />
           <MonitorItem label="Casos de Mortes" number={mortes} />
           <MonitorItem label="Casos críticos" number={criticos} />
+        </div>
+        <div style={{ display: "flex", flex: 1, alignItems: "flex-end" }}>
+          <h6>Atualizado em: {updateTime}</h6>
         </div>
       </header>
     </div>
